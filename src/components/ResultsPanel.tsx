@@ -69,7 +69,7 @@ export function ResultsPanel({ imagePreview, predictions, isAnalyzing, onReset }
       </div>
       
       {!isAnalyzing && (
-        <button className="reset-btn" onClick={onReset}>
+        <button className="reset-btn" onClick={onReset} style={{ width: '100%', marginTop: '2rem' }}>
           <RefreshCcw size={18} />
           Analyze Another Scan
         </button>

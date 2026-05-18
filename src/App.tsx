@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UploadZone } from './components/UploadZone';
+import { IntroPage } from './components/IntroPage';
 import { ResultsPanel, type Prediction } from './components/ResultsPanel';
 import { initModel, predict } from './lib/teachableMachine';
 import { AlertTriangle, Stethoscope } from 'lucide-react';
@@ -10,6 +11,7 @@ function App() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [predictions, setPredictions] = useState<Prediction[] | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     // Initialize the model when the app loads
@@ -53,10 +55,19 @@ function App() {
     setPredictions(null);
   };
 
+  const goHome = () => {
+    handleReset();
+    setHasStarted(false);
+  };
+
+  if (!hasStarted) {
+    return <IntroPage onStart={() => setHasStarted(true)} />;
+  }
+
   return (
     <div className="app-container">
       <header className="header">
-        <div className="logo-container">
+        <div className="logo-container" onClick={goHome} style={{ cursor: 'pointer' }}>
           <Stethoscope className="logo-icon" />
           <h1 className="logo-text">Health<span>Care</span></h1>
         </div>
@@ -67,10 +78,7 @@ function App() {
       <main className="main-content">
         {!imageFile && (
           <div className="hero-section">
-            <h2 className="hero-title">Medical Imaging Intelligence</h2>
-            <p className="hero-subtitle">
-              Advanced AI-assisted preliminary screening for MRI scans.
-            </p>
+            <h2 className="hero-title text-teal">Medical Imaging Intelligence</h2>
           </div>
         )}
 

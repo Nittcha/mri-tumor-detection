@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #0d9488; /* Clinical Teal */
-  --primary-light: #14b8a6;
+  --primary-color: #06b6d4; /* Intro Teal */
+  --primary-light: #22d3ee;
   --primary-bg: #f0fdfa;
   
-  --secondary-color: #1e3a8a; /* Deep Blue for text */
-  --secondary-light: #3b82f6;
+  --secondary-color: #1e293b; /* Intro dark text */
+  --secondary-light: #334155;
 
   --text-main: #334155;
   --text-muted: #64748b;
