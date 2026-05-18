@@ -4,7 +4,6 @@ import type { Prediction } from '../components/ResultsPanel';
 const MODEL_URL = "https://teachablemachine.withgoogle.com/models/kO4o6kArw/"; 
 
 let model: tmImage.CustomMobileNet | null = null;
-let maxPredictions: number = 0;
 
 export async function initModel() {
 
@@ -14,7 +13,6 @@ export async function initModel() {
 
   try {
     model = await tmImage.load(modelURL, metadataURL);
-    maxPredictions = model.getTotalClasses();
   } catch (error) {
     console.error("Failed to load the Teachable Machine model:", error);
     throw new Error("Model loading failed.");
